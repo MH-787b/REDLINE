@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #050505;
+  --panel: #0c0c0c;
+  --fg: #f2f2f2;
+  --dim: #6f6f6f;
+  --red: #e10600;
+  --hairline: rgba(242, 242, 242, 0.14);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-fg: var(--fg);
+  --color-dim: var(--dim);
+  --color-red: var(--red);
+  --color-hairline: var(--hairline);
+  --font-display: var(--font-anton);
+  --font-mono: var(--font-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--bg);
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a var(--bg);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* no background here — it would paint over the fixed -z-10 WebGL canvas */
+  color: var(--fg);
+  font-family: var(--font-plex-mono), monospace;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--red);
+  color: #050505;
+}
+
+/* hide native cursor where the custom cursor runs */
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button,
+  body.custom-cursor input,
+  body.custom-cursor [data-cursor] {
+    cursor: none;
+  }
+}
+
+.font-display {
+  font-family: var(--font-anton), sans-serif;
+}
+
+.hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+.hairline-b {
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* mono micro-label */
+.label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* split-text line masking */
+.split-line {
+  overflow: clip;
+}
+
+input:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
