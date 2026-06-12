@@ -107,9 +107,9 @@ const fragmentShader = /* glsl */ `
 // hole behavior per section phase: [cx, cy, radius, ring, lens]
 const PHASES: [number, number, number, number, number][] = [
   [0.0, -0.04, 0.16, 1.0, 1.1], // hero — centered, full lensing
-  [-0.68, 0.34, 0.045, 0.35, 0.6], // collection — distant anchor, garments take focus
-  [0.62, 0.28, 0.07, 0.55, 0.8], // manifesto — drifts back in, off-center
-  [0.0, 0.06, 0.13, 1.15, 1.0], // signup — returns to center
+  [-0.95, 0.52, 0.04, 0.4, 0.65], // collection — flung far upper-left, tiny anchor
+  [0.85, -0.34, 0.1, 0.7, 0.9], // manifesto — sweeps diagonally to lower-right
+  [0.0, 0.05, 0.15, 1.2, 1.05], // signup — surges back to center, near hero scale
 ];
 
 function samplePhase(phase: number): [number, number, number, number, number] {

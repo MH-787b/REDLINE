@@ -29,9 +29,9 @@ const GARMENTS: {
     index: "01",
     notes: ["BOXY FOOTBALL CUT", "HAND-DRAWN SINGULARITY", "WHITE COLLAR"],
     callouts: [
-      { x: 80, y: 26, side: "right", text: "£45", accent: true },
-      { x: 44, y: 48, side: "left", text: "HAND-DRAWN SINGULARITY" },
-      { x: 60, y: 84, side: "right", text: "BOXY CROP FIT" },
+      { x: 70, y: 36, side: "right", text: "£45", accent: true },
+      { x: 40, y: 47, side: "left", text: "HAND-DRAWN SINGULARITY" },
+      { x: 56, y: 78, side: "right", text: "BOXY CROP FIT" },
     ],
   },
   {
@@ -211,6 +211,7 @@ function Garment({
   return (
     <div
       ref={rootRef}
+      id={`g-${garment.index}`}
       className={`relative flex min-h-screen items-center gap-8 px-5 py-24 md:px-10 ${
         flip ? "flex-row-reverse" : ""
       } flex-col md:flex-row`}
@@ -231,15 +232,15 @@ function Garment({
         style={{ perspective: "1200px" }}
         data-cursor
       >
-        <div ref={imgWrapRef} className="relative w-[min(78vw,520px)] will-change-transform">
+        <div ref={imgWrapRef} className="relative w-[min(88vw,640px)] will-change-transform">
           <div ref={floatRef} className="will-change-transform">
             <Image
               src={garment.src}
               alt={garment.name}
-              width={700}
-              height={700}
+              width={900}
+              height={900}
               className="h-auto w-full drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)]"
-              sizes="(max-width: 768px) 78vw, 520px"
+              sizes="(max-width: 768px) 88vw, 640px"
             />
           </div>
 
