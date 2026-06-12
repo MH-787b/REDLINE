@@ -158,8 +158,11 @@ export default function BlackHole() {
       size.width * state.viewport.dpr,
       size.height * state.viewport.dpr
     );
+    // portrait screens can't show the full horizontal sweep — pull it inward
+    // (desktop aspect ≥ 1.25 leaves this at 1, unchanged)
+    const ax = Math.min(1, (size.width / size.height) * 0.8);
     // hole subtly tracks the mouse
-    u.uCenter.value.set(cx + L.mx * 0.05, cy + L.my * 0.04);
+    u.uCenter.value.set(cx * ax + L.mx * 0.05, cy + L.my * 0.04);
     u.uRadius.value = radius;
     u.uRing.value = L.ring;
     u.uLens.value = lens;

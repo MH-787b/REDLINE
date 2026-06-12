@@ -232,7 +232,7 @@ function Garment({
         style={{ perspective: "1200px" }}
         data-cursor
       >
-        <div ref={imgWrapRef} className="relative w-[min(88vw,640px)] will-change-transform">
+        <div ref={imgWrapRef} className="relative w-[min(76vw,640px)] md:w-[min(88vw,640px)] will-change-transform">
           <div ref={floatRef} className="will-change-transform">
             <Image
               src={garment.src}
@@ -259,7 +259,7 @@ function Garment({
               >
                 <span className="c-dot h-2 w-2 shrink-0 scale-0 rounded-full bg-red" />
                 <span
-                  className={`c-line h-px w-12 shrink-0 scale-x-0 bg-red/80 md:w-20 ${
+                  className={`c-line h-px w-6 shrink-0 scale-x-0 bg-red/80 md:w-20 ${
                     c.side === "left" ? "origin-right" : "origin-left"
                   }`}
                 />
@@ -271,7 +271,7 @@ function Garment({
                   }`}
                 />
                 <span
-                  className={`c-label label invisible whitespace-nowrap border bg-bg/90 px-2.5 py-1.5 ${
+                  className={`c-label label invisible max-w-[110px] whitespace-normal leading-snug md:max-w-none md:whitespace-nowrap border bg-bg/90 px-2.5 py-1.5 ${
                     c.side === "left" ? "mr-1.5" : "ml-1.5"
                   } ${
                     c.accent
