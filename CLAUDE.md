@@ -5,10 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 - `npm run dev` — dev server (Turbopack) at http://localhost:3000
-- `npm run build` — production build (also runs TypeScript checking)
-- `npm run start` — serve production build
+- `npm run build` — static export to `out/` (also runs TypeScript checking). `npm run start` does NOT work with `output: "export"` — serve `out/` with any static server instead.
 
 No test suite or linter is configured.
+
+## Deployment
+
+GitHub Pages at https://mh-787b.github.io/REDLINE/ via `.github/workflows/nextjs.yml` (push to `master`). Pages serves from the `/REDLINE` subpath, so the workflow sets `GITHUB_PAGES=true`, which makes `next.config.ts` apply `basePath` — and `lib/imageLoader.ts` prefixes it onto `next/image` srcs (Next does not apply basePath to image srcs on static export; without the custom loader the clothing PNGs 404). Repo settings → Pages → Source must stay on "GitHub Actions".
 
 ## What this is
 
